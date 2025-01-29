@@ -1,0 +1,15 @@
+controllore = True
+while controllore:
+    scelta = input("Vuoi entrare nel programma? Si/No?")
+    
+    if(scelta == "si"):
+        print("Sei appena entrato!")
+        
+else:
+        print("Non sei entrato.")
+        controllore = False
+        
+        
+numero = int(input("Ora inserisci un numero positivo"))
+        
+    
