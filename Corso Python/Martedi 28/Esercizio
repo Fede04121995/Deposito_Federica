@@ -1,0 +1,32 @@
+#creare un sistema di if che al rispetto di certe condizioni predefinite 
+#aggiunga i valori corrispondenti ad una lista in ordine crescente
+
+eta = int(input("Quanti anni hai?"))
+
+if(eta<18):
+    print("Non puoi vedere questo film")
+else:
+    print("puoi vedere questo film")
+    
+print("Scegli un film da vedere tra i seguenti:")  
+  
+lista_film = []
+film1 = lista_film.append("Il gladiatore")
+film2 = lista_film.append("Titanic")
+film3 = lista_film.append("Terminal")
+print(lista_film)
+
+
+
+scelta = int(input("Quale scegli tra il numero 1, 2 o 3?"))
+film1 = 1
+film2 = 2
+film3 = 3
+if(film1 == 1):
+    print("Ottimo! Hai scelto Il Gladiatore")
+elif(film2 == 2):
+        print("Ottimo! Hai scelto Titanic")
+elif(film3 == 3):
+            print("Ottimo! Hai scelto Terminal")
+else:
+            print("Peccato! Non ne hai scelto nessuno")

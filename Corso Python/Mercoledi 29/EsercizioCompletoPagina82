@@ -1,0 +1,19 @@
+#utilizzo di if
+controllore = True
+
+while controllore:
+    
+    numero = int(input("Fornisci un numero"))
+
+    if(numero %2 == 0):
+        print("Il numero che hai scelto è pari")
+        
+    else:
+        print("Il numero che hai scelto è dispari")
+        
+    scelta = input("Digita esci") 
+    
+    if(scelta == "esci" ):
+        controllore = False
+        print("Hai smesso")
+    

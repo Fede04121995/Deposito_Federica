@@ -1,0 +1,14 @@
+
+pari = 0
+
+while(pari<5):
+    numero = int(input("Inserisci un numero"))
+    if(numero %2 == 0):
+        print("il numero è pari")
+        pari += 1 
+    else:
+        print("Il numero è dispari")
+        
+print("Hai trovato 5 numeri pari")       
+    
+    

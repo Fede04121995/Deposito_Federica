@@ -1,0 +1,9 @@
+controllore = True
+
+while controllore == True:
+    print("Ciao")
+    
+    scelta = input("scegli esci per fermare il ciclo")
+    
+    if scelta == "esci":
+        controllore = False

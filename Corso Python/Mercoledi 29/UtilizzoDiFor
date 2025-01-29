@@ -1,0 +1,27 @@
+controllore = True
+
+lista_numeri = []
+
+while controllore == True:
+    numero = int(input("Inserisci un numero"))
+    
+    lista_numeri.append(numero)
+    
+    print("La tua lista ora è:", lista_numeri)
+    
+    scelta = input("digita stop quando vuoi terminare o continua")
+    if(scelta == "stop"):
+       controllore = False
+    print("hai scelto di continuare")
+
+for n in lista_numeri:
+        print("perfetto!")
+        print("ora calcoliamo il quadrato di ognuno")
+        print(n**2)
+   
+    
+
+
+        
+    
+    

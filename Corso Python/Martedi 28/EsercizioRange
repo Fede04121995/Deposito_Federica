@@ -1,0 +1,14 @@
+
+numero = int(input("Inserisci un numero"))
+
+
+for n in range(numero, -1, -1):
+ 
+   print(n)
+   
+   
+  
+      
+
+
+

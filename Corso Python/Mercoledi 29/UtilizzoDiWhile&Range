@@ -1,0 +1,8 @@
+#utilizzo di while e range    
+
+controllore = True
+
+while controllore:
+    n = int(input("Inserisci un numero"))
+    for i in range(n, 1, -1):
+        print("ok")
