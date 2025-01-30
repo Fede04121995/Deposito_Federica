@@ -1,0 +1,39 @@
+lista_area = []
+
+def menuArea_figuregeometriche():    
+    scelta = int(input("Quale Figura scegli tra Triangolo = 1, Quadrato = 2 e Rettangolo = 3?"))
+
+    if(scelta == 1):  
+        print("Hai scelto Triangolo")
+        base = int(input("Dammi un numero per la tua base"))
+        altezza = int(input("Dammi un numero per l'altezza"))
+        print("Grazie! Procedo a calcolare l'area del Triangolo")
+        area = (base*altezza)/2
+        print("L'area del triangolo è:", area)
+    elif(scelta == 2):
+        print("Hai scelto Quadrato")
+        lato = int(input("Dammi un numero per calcolare l'area del quadrato"))
+        print("Grazie! Procedo a calcolare l'area del Quadrato")   
+        area = (lato**2)
+        print("L'area del quadrato è:", area)
+    elif(scelta == 3):
+        print("Hai scelto Rettangolo") 
+        base = int(input("Dammi un numero per la tua base"))
+        altezza = int(input("Dammi un numero per l'altezza"))
+        print("Grazie! Procedo a calcolare l'area del Rettangolo")
+        area = (base*altezza)
+        print("L'area del rettangolo è:", area)
+    else:
+        print("Non hai scelto. Ciao")
+    
+    lista_area.append(area)    
+    print("Fino ad ora la lista delle tue aree è:", lista_area) 
+        
+while True:
+    menuArea_figuregeometriche()            
+    scelta = input("Vuoi rientrare nel Menu-Area Figure Geometriche?? si/no") 
+    if(scelta == "si"):
+        continue
+    else:
+        print("Alla prossima!")
+        break                  
