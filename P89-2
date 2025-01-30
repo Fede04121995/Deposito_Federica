@@ -1,0 +1,12 @@
+#ciclo for
+
+n= int(input("inserisci un numero"))
+
+for num in range(1, n+1):
+    somma = num+n
+    if(num %2 == 0):
+        print(somma)
+    
+    
+    
+    

@@ -1,0 +1,17 @@
+n = int(input("Inserisci un numero"))
+if(n <= 1):
+    print("Non è primo")
+elif(n == 2 or n == 3):
+    print("Il numero è primo")
+elif(n %2 == 0):
+    print("Il numero è primo")
+else:
+    primo = True
+    for i in range(3, (n // 2) + 1, 2):  # Controlliamo solo numeri dispari fino a √n
+        if n % i == 0:
+            primo = False  # Se trova un divisore, non è primo
+            break  # Uscire subito dal ciclo
+    if primo:
+        print(f"{n} è un numero primo!")
+    else:
+        print(f"{n} non è un numero primo.")
