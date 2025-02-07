@@ -5,82 +5,100 @@ class Posto:
         self.__occupato = False
         
     def prenota(self):
-        if(self._occupato):
-            print(f"Il posto {self._fila}{self._numero} è già occupato.")
+        if self.__occupato:
+            print(f"Il posto {self.__fila}{self.__numero} è già occupato.")
         else:
-            self._occupato = True
-            print(f"Posto {self._fila}{self._numero} ora prenotato.")
+            self.__occupato = True  
+            print(f"Posto {self.__fila}{self.__numero} ora prenotato.")
             
     def libera(self):
-        if self._occupato:
-            self._occupato = False
-            print(f"Posto {self._fila}{self._numero} appena liberato.")
+        if self.__occupato:
+            self.__occupato = False  
+            print(f"Posto {self.__fila}{self.__numero} appena liberato.")
         else:
-            print(f"Errore: Il posto {self._fila}{self._numero} non era prenotato.")
+            print(f"Errore: Il posto {self.__fila}{self.__numero} non era prenotato.")
             
     def get_numero(self):
-        return self._numero
+        return self.__numero
 
     def get_fila(self):
-        return self._fila
+        return self.__fila
 
     def get_occupato(self):
-        return self._occupato
- 
-    
+        return self.__occupato
+
     
 class PostoVIP(Posto):
     def __init__(self, numero, fila):
         super().__init__(numero, fila)
-        self.servizi_extra = ["Accesso al lunge", "Servizio al posto"]
+        self.servizi_extra = ["Accesso al lounge", "Servizio al posto"]
     
     def prenota(self):
-        if(self.__occupato):
-            print(f"Il posto {self.__fila}{self.__numero} è già occupato.")
+        if self.get_occupato():  
+            print(f"Il posto {self.get_fila()}{self.get_numero()} è già occupato.")
         else:
-            self._occupato = True
-            print(f"Posto {self.__fila}{self.__numero} ora prenotato") 
-            print(f"Ed hai aggiunto i seguenti servizi extra: {', '.join(self.servizi_extra)}")   
+            super().prenota()  
+            print(f"Ed hai aggiunto i seguenti servizi extra: {', '.join(self.servizi_extra)}")
  
-        
+
 class PostoStandard(Posto):
-    def __init__(self, numero: int, fila: str, costo_prenotazione_online: float):
+    def __init__(self, numero, fila):
         super().__init__(numero, fila)
-        self.costo_prenotazione_online = costo_prenotazione_online
         
     def prenota(self):
-        if(self.__occupato):
-            print(f"Il posto {self.__fila}{self.__numero} è già occupato.")
+        if self.get_occupato():  
+            print(f"Il posto {self.get_fila()}{self.get_numero()} è già occupato.")
         else:
-            self.__occupato = True
-            print(f"Posto {self.__fila}{self.__numero} ora prenotato") 
-            print(f"Grazie per aver acquistato il tuo posto al costo di: {self.costo_prenotazione_online}")
-            
-            
-class Teatro():
+            super().prenota()  
+            print("Grazie per aver acquistato il tuo posto al costo di")
+
+
+class Teatro:
     def __init__(self):
         self.lista_posti = []
         
     def aggiungi_posto(self):
-        num_posti_totali = int(input("Quanti posti ci sono?"))
-        for x in range(1, num_posti_totali + 1): 
-            num_VIP = int(input("Quanti posti VIP ci sono?"))
-            num_Standard = int(input("E quanti Standard"))
-            tot = Teatro(num_VIP, num_Standard)
-            self.lista_posti.append(tot) 
-            print(self.lista_posti)
-    
-    def prenota_posto(self, numero, fila):
-        for x in self.lista_posti:
-            if x.get_numero() == numero and x.get_fila() == fila:
-                return
+        num_posti_totali = int(input("Quanti posti totali ci sono? "))
+        num_VIP = int(input("Quanti posti VIP ci sono? "))
+        num_Standard = int(input("E quanti Standard? "))
+        
+        if num_VIP + num_Standard != num_posti_totali:
+            print("Errore: La somma dei posti VIP e Standard non corrisponde al numero totale di posti.")
+            return  # Esce dal metodo, quindi l'inserimento dei posti non prosegue
         else:
-             print(f"Il posto {fila}{numero} non c'è")
+            print("Numero di posti corretto. Procediamo con l'inserimento dei posti.")
+            
+        for y in range(1, num_VIP + 1):
+            fila_VIP = input(f"Qual è la fila dei posti VIP? {y}: ")
+            numero_VIP = int(input(f"E il numero posto VIP? {y}: "))
+            posto_vip = PostoVIP(numero_VIP, fila_VIP)
+            self.lista_posti.append(posto_vip)
+            
+        for z in range(1, num_Standard + 1):
+            fila_Standard = input(f"Qual è la fila dei posti Standard? {z}: ")
+            numero_Standard = int(input(f"E il numero posto Standard? {z}: "))
+            posto_Standard = PostoStandard(numero_Standard, fila_Standard)
+            self.lista_posti.append(posto_Standard)
+            
+    def prenota_posto(self):
+        fila = input("Inserisci la fila del posto che vuoi prenotare: ")
+        numero = int(input("Inserisci il numero del posto che vuoi prenotare: "))
+        
+        for posto in self.lista_posti:
+            if posto.get_numero() == numero and posto.get_fila() == fila:
+                posto.prenota()
+                break
+        else:
+            print(f"Il posto {fila}{numero} non è stato trovato.")
     
-    def stampa_posti_occupati():
-        pass
-    
+    def stampa_posti_occupati(self):
+        for posto in self.lista_posti:
+            if posto.get_occupato():  # Usando il getter
+                print(f"Posto {posto.get_fila()}{posto.get_numero()} è occupato.")
+            else:
+                print(f"Posto {posto.get_fila()}{posto.get_numero()} è libero.")
+                
 t1 = Teatro()
-t1.aggiungi_posto()
-t1.prenota_posto()
-t1.stampa_posti_occupati()   
+t1.aggiungi_posto()  
+t1.prenota_posto()  
+t1.stampa_posti_occupati() 
