@@ -5,14 +5,14 @@ class Posto:
         self.__occupato = False
         
     def prenota(self):
-        if self.__occupato:
+        if(self.__occupato):
             print(f"Il posto {self.__fila}{self.__numero} è già occupato.")
         else:
             self.__occupato = True  
             print(f"Posto {self.__fila}{self.__numero} ora prenotato.")
             
     def libera(self):
-        if self.__occupato:
+        if(self.__occupato):
             self.__occupato = False  
             print(f"Posto {self.__fila}{self.__numero} appena liberato.")
         else:
@@ -34,7 +34,7 @@ class PostoVIP(Posto):
         self.servizi_extra = ["Accesso al lounge", "Servizio al posto"]
     
     def prenota(self):
-        if self.get_occupato():  
+        if(self.get_occupato()):  
             print(f"Il posto {self.get_fila()}{self.get_numero()} è già occupato.")
         else:
             super().prenota()  
@@ -46,7 +46,7 @@ class PostoStandard(Posto):
         super().__init__(numero, fila)
         
     def prenota(self):
-        if self.get_occupato():  
+        if(self.get_occupato()):  
             print(f"Il posto {self.get_fila()}{self.get_numero()} è già occupato.")
         else:
             super().prenota()  
@@ -62,7 +62,7 @@ class Teatro:
         num_VIP = int(input("Quanti posti VIP ci sono? "))
         num_Standard = int(input("E quanti Standard? "))
         
-        if num_VIP + num_Standard != num_posti_totali:
+        if(num_VIP + num_Standard != num_posti_totali):
             print("Errore: La somma dei posti VIP e Standard non corrisponde al numero totale di posti.")
             return  # Esce dal metodo, quindi l'inserimento dei posti non prosegue
         else:
